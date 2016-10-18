@@ -12,8 +12,9 @@ for yr in range(15,10,-1):
         rollno = k+dep+"200"+j
         url = "https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno="+rollno
         content = requests.get(url)
+        p =open('pointer','w')
+        p.write(rollno + ' is done.')
         soup = BeautifulSoup(content.text, 'lxml')
-
         sgpa = soup.find_all("b",string = "SGPA")
         cgpa = soup.find_all("b",string = " CGPA")
         sgpa.reverse()
